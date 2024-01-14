@@ -9,7 +9,7 @@ class User(db.Model):
     username: orm.Mapped[str] = orm.mapped_column(sa.String(64), index=True, unique=True)
     email: orm.Mapped[str] = orm.mapped_column(sa.String(120), index=True, unique=True)
     password_hash: orm.Mapped[Optional[str]] = orm.mapped_column(sa.String(256))
-    posts: orm.WriteOnlyMapped['Posts'] = orm.relationship(back_populates="author")
+    posts: orm.WriteOnlyMapped['Post'] = orm.relationship(back_populates="author")
     def __repr__(self):
         return '<User {}>'.format(self.username)
 
